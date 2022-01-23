@@ -4,4 +4,4 @@
 
 This is a tutorial based project for learning basics of redux-saga and its use cases. This is built with the yt tutorial [series](https://youtu.be/juJDsA56QcA)
 
-However it is built using Hooks and not traditional react components.
+Unlike yt series, this is built using Hooks and not traditional react components.
