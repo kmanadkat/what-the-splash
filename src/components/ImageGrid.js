@@ -1,21 +1,20 @@
 import React from 'react'
+import { useDispatch } from 'react-redux'
 import { useSelector } from 'react-redux'
+import { loadImages } from '../store/actions'
 import Errors from './Errors'
+import Loading from './Loading'
 
 const ImageGrid = () => {
   const { images, errors, loading } = useSelector((store) => store.images)
-  // const [images, setImages] = React.useState([])
+  const dispatch = useDispatch()
 
-  // React.useEffect(() => {
-  //   const key = process.env.REACT_APP_KEY
-
-  //   fetch(`https://api.unsplash.com/search/photos/?client_id=${key}&per_page=28&query=bungalow`)
-  //     .then((res) => res.json())
-  //     .then((data) => setImages(data.results))
-  // }, [])
+  React.useEffect(() => {
+    dispatch(loadImages())
+  }, [dispatch])
 
   if (loading) {
-    return <p>Loading...</p>
+    return <Loading />
   }
 
   return (
@@ -23,7 +22,9 @@ const ImageGrid = () => {
       <Errors errors={errors} />
       <section className="grid">
         {images.map((image) => (
-          <div key={image.id} className={`item item-${Math.ceil(image.height / image.width)}`}>
+          <div
+            key={image.id}
+            className={`item item-${Math.ceil(image.height / image.width)}`}>
             <img src={image.urls.small} alt={image.user.username} />
           </div>
         ))}
