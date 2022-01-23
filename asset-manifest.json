@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/what-the-splash/static/css/main.a86cb035.css",
+    "main.js": "/what-the-splash/static/js/main.c216276a.js",
+    "index.html": "/what-the-splash/index.html",
+    "main.a86cb035.css.map": "/what-the-splash/static/css/main.a86cb035.css.map",
+    "main.c216276a.js.map": "/what-the-splash/static/js/main.c216276a.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.a86cb035.css",
+    "static/js/main.c216276a.js"
+  ]
+}
