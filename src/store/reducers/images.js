@@ -4,22 +4,23 @@ const initialState = {
   loading: false,
   images: [],
   errors: [],
+  page: 1,
 }
 
 const imagesReducer = (state = initialState, { type, payload }) => {
   switch (type) {
     case IMAGES.LOAD:
       return {
+        ...state,
         loading: true,
-        images: [],
-        errors: [],
       }
 
     case IMAGES.LOAD_SUCCESS:
       return {
         ...state,
         loading: false,
-        images: [...payload],
+        images: [...state.images, ...payload],
+        page: state.page + 1,
       }
 
     case IMAGES.LOAD_FAIL:

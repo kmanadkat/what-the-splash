@@ -9,13 +9,13 @@ const ImageGrid = () => {
   const { images, errors, loading } = useSelector((store) => store.images)
   const dispatch = useDispatch()
 
-  React.useEffect(() => {
+  const loadImagesHandler = React.useCallback(() => {
     dispatch(loadImages())
   }, [dispatch])
 
-  if (loading) {
-    return <Loading />
-  }
+  React.useEffect(() => {
+    loadImagesHandler()
+  }, [loadImagesHandler])
 
   return (
     <div className="content">
@@ -29,6 +29,12 @@ const ImageGrid = () => {
           </div>
         ))}
       </section>
+      <div className="load-btn-wrapper">
+        {loading && <Loading />}
+        {!loading && errors.length === 0 && (
+          <button onClick={loadImagesHandler}>Load More Images</button>
+        )}
+      </div>
     </div>
   )
 }
